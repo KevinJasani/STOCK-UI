@@ -10,29 +10,82 @@ import { Component,OnInit } from '@angular/core';
   styleUrls: ['./sample.component.scss']
 })
 export class SampleComponent implements OnInit {
-  name : string = ""
-  address : String = ""
-  phone : String = ""
+  StudentArray : any[] = [];
+  currentStudentID = "";
+ 
+  name: string ="";
+  address: string ="";
+  phone: string ="";
   
   ngOnInit() {
     // ...
   }
   constructor(private http: HttpClient )
   {
-   // this.getAllStudent();
+    this.getAllStudent();
   }
-  // getAllStudent() {
+  getAllStudent() {
  
-  //   this.http.get("http://localhost:8000/user/getAll")
-  //   .subscribe((resultData: any)=>
-  //   {
+    this.http.get("http://localhost:3000/user/getAll")
+    .subscribe((resultData: any)=>
+    {
       
-  //       console.log(resultData);
-  //       this.StudentArray = resultData.data;
-  //   });
+        console.log(resultData);
+        this.StudentArray = resultData.data;
+    });
  
  
-  //ll }
+  }
+ 
+  setUpdate(data: any)
+  {
+   this.name = data.name;
+   this.address = data.address;
+   this.phone = data.phone;
+ 
+   this.currentStudentID = data._id;
+  
+  }
+  save()
+  {
+    if(this.currentStudentID == '')
+    {
+        this.register();
+    }
+      else
+      {
+       this.UpdateRecords();
+      }      
+ 
+  }
+  UpdateRecords()
+  {
+    let bodyData = {
+      "name" : this.name,
+      "address" : this.address,
+      "phone" : this.phone,
+ 
+    };
+    
+    this.http.patch("http://localhost:3000/user/update"+ "/"+this.currentStudentID,bodyData).subscribe((resultData: any)=>
+    {
+        console.log(resultData);
+        alert("Student Updateddd")
+        this.getAllStudent();
+      
+    });
+  }
+  
+  setDelete(data: any) {
+    this.http.delete("http://localhost:3000/user/delete"+ "/"+ data._id).subscribe((resultData: any)=>
+    {
+        console.log(resultData);
+        alert("Student Deletedddd")
+        this.getAllStudent();
+  
+    });
+    }
+    
  
   register()
   {
@@ -48,11 +101,11 @@ export class SampleComponent implements OnInit {
         console.log(resultData);
         console.log("data got it");
         alert("Student Registered Successfully")
-         //this.getAllEmployee();
+        //this.getAllEmployee();
         this.name = '';
         this.address = '';
         this.phone  = '';
-        //this.getAllStudent();
+        this.getAllStudent();
     });
   }
 }

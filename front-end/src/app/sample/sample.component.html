@@ -1,6 +1,6 @@
 <div class="container mt-4" >
     <div class="card">
-            <h1>Student Registation</h1>
+            <h1>Stock UI</h1>
 <form>
     <div class="form-group">
       <label>Name</label>
@@ -16,7 +16,33 @@
         <label>Phone</label>
         <input type="text" class="form-control" [(ngModel)]="phone" [ngModelOptions]="{standalone: true}" id="phone" placeholder="Enter Phone"> 
       </div>
-    <button type="submit" (click)="register()" class="btn btn-primary">Submit</button>
+    <button type="submit" (click)="save()" class="btn btn-primary">Submit</button>
   </form>
 </div>
 </div>
+
+<div class="container mt-4" >
+  <h1>Portfollio</h1>
+  <table class="table">
+    <thead>    
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>  
+        <th scope="col">Option</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let StudentItem of StudentArray">
+        <td>{{StudentItem.name  | uppercase}}</td>
+        <td>{{StudentItem.address }}</td>
+        <td>{{StudentItem.phone }}</td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="setDelete(StudentItem)">Sell</button>            
+        </td>
+      </tr>          
+    </tbody>
+  </table>
+   
+  </div>
