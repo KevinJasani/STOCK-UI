@@ -29,6 +29,23 @@ module.exports.createUserDBService = (userDetails) => {
         });
     });
 }
+// sign yp data serivce data
+module.exports.signupUserDbService = (userDetails) => {
+    return new Promise(function myFn(resolve, reject) {
+        var userModelData = new userModel();
+        userModelData.firstname = userDetails.firstname;
+        userModelData.lastname = userDetails.lastname;
+        userModelData.email = userDetails.email;
+        userModelData.password = userDetails.password;
+        userModelData.save(function resultHandle(error, result) {
+            if (error) {
+                reject(false);
+            } else {
+                resolve(true);
+            }
+        });
+    });
+}
 module.exports.updateUserDBService = (id,userDetails) => {    
     console.log(userDetails);
     return new Promise(function myFn(resolve, reject) {

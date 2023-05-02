@@ -7,6 +7,9 @@ var userController = require('../src/user/userController');
  router.route('/user/getAll').get(userController.getDataConntrollerfn);
 
  router.route('/user/create').post(userController.createUserControllerFn);
+ // sign up data
+ router.route('/userdata/create').post(userController.signupdataFn);
+ router.route('/login').post(userController.signIn);
 
  router.route('/user/update/:id').patch(userController.updateUserController);
 

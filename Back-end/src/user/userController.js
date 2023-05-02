@@ -26,6 +26,20 @@ var createUserControllerFn = async (req, res) => {
         res.send({ "status": false, "message": "123 Error creating user" });
     }
 }
+// sign up data
+var signupdataFn = async (req, res) => {
+    try {
+        var status = await userService.signupUserDbService(req.body);
+        if (status) {
+            res.send({ "status": true, "message": "User created successfully" });
+        } else {
+            res.send({ "status": false, "message": "Error creating user" });
+        }
+    } catch (error) {
+        console.error(error);
+        res.send({ "status": false, "message": "123 Error creating user" });
+    }
+}
 var updateUserController = async (req, res) =>
 {
     console.log(req.params.id);
@@ -50,6 +64,6 @@ var deleteUserController = async (req, res) =>
          res.send({ "status": false, "message": "User Deleteddd Faileddddddd" });
      }
 }
-module.exports = { getDataConntrollerfn, createUserControllerFn,updateUserController,deleteUserController };
+module.exports = { getDataConntrollerfn, createUserControllerFn,updateUserController,deleteUserController, signupdataFn };
 
 
