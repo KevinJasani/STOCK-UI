@@ -64,13 +64,13 @@
                 <!-- 2 column grid layout with text inputs for the first and last names --> 
                 <!-- Email input -->
                 <div class="form-outline mb-4" class="form-group">
-                  <input type="email" id="form3Example3" class="form-control" [(ngModel)]="user.email"/>
+                  <input type="email" id="form3Example3" class="form-control" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"/>
                   <label class="form-label" for="form3Example3">Email address</label>
                 </div>
   
                 <!-- Password input -->
                 <div class="form-outline mb-4" class="form-group">
-                  <input type="password" id="form3Example4" class="form-control" [(ngModel)]="user.password"/>
+                  <input type="password" id="form3Example4" class="form-control"  [(ngModel)]="password" [ngModelOptions]="{standalone: true}"/>
                   <label class="form-label" for="form3Example4">Password</label>
                 </div>
 

@@ -13,6 +13,19 @@ var getDataConntrollerfn = async (req, res) =>
     
    
 }
+//login data fatch
+var getlogindataFn = async (req, res) =>
+{
+    try {
+        var empolyee = await userService.getlogindataDBService();
+        res.send({ "status": true, "data": empolyee });
+        // do something with the result
+      } catch (error) {
+        console.error(error);
+      }
+    
+   
+}
 var createUserControllerFn = async (req, res) => {
     try {
         var status = await userService.createUserDBService(req.body);
@@ -64,6 +77,6 @@ var deleteUserController = async (req, res) =>
          res.send({ "status": false, "message": "User Deleteddd Faileddddddd" });
      }
 }
-module.exports = { getDataConntrollerfn, createUserControllerFn,updateUserController,deleteUserController, signupdataFn };
+module.exports = { getDataConntrollerfn, createUserControllerFn,updateUserController,deleteUserController, signupdataFn, getlogindataFn };
 
 

@@ -23,6 +23,7 @@ export class SignupComponent {
   signup()
   {
     console.log("data got it");
+    
     //alert("Student Registered Successfully")
     let bodyData = {
       "firstname" : this.firstName,
@@ -30,6 +31,7 @@ export class SignupComponent {
       "email" : this.email,
       "password" : this.password
     };
+    console.log(bodyData);
     this.http.post("http://localhost:3000/userdata/create",bodyData).subscribe((resultData: any)=>
     {
         console.log(resultData);

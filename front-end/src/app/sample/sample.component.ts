@@ -16,7 +16,7 @@ export class SampleComponent implements OnInit {
   name: string ="";
   address: string ="";
   phone: string ="";
-  
+  data : String= "";
   ngOnInit() {
     // ...
   }
@@ -29,11 +29,21 @@ export class SampleComponent implements OnInit {
     this.http.get("http://localhost:3000/user/getAll")
     .subscribe((resultData: any)=>
     {
-      
+
+        
         console.log(resultData);
         this.StudentArray = resultData.data;
+        
     });
- 
+    // for (let i = 0; i < this.StudentArray.length; i++) {
+      
+    //   if(this.StudentArray[i].name=="adad"){
+    //      console.log("successfully login");
+    //   }else{
+    //     console.log("cant find user");
+    //   }
+      // You can perform any desired operation with each element of resultData
+  //}
  
   }
  

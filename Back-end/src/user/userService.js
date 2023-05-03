@@ -1,3 +1,4 @@
+const signupModel = require('./signupModel');
 var userModel = require('./userModel');
 // try {
 module.exports.getDataFromDBService = () => {
@@ -13,6 +14,21 @@ module.exports.getDataFromDBService = () => {
         });
     });
 }
+//logindata check
+module.exports.getlogindataDBService = () => {
+ 
+    return new Promise(function checkURL(resolve, reject) {
+        signupModel.find({}, function returnData(error, result) {
+            if (error) {
+                reject(false);
+            } else {
+        
+                resolve(result);
+            }
+        });
+    });
+}
+
 
 module.exports.createUserDBService = (userDetails) => {
     return new Promise(function myFn(resolve, reject) {
@@ -32,7 +48,7 @@ module.exports.createUserDBService = (userDetails) => {
 // sign yp data serivce data
 module.exports.signupUserDbService = (userDetails) => {
     return new Promise(function myFn(resolve, reject) {
-        var userModelData = new userModel();
+        var userModelData = new signupModel();
         userModelData.firstname = userDetails.firstname;
         userModelData.lastname = userDetails.lastname;
         userModelData.email = userDetails.email;
