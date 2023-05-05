@@ -11,6 +11,11 @@ var userController = require('../src/user/userController');
  router.route('/userdata/create').post(userController.signupdataFn);
  router.route('/userdata/getAll').get(userController.getlogindataFn);
  //router.route('/login').post(userController.signIn);
+//Stock list data
+router.route('/stocklist/getAll').get(userController.stocklistdataFn);
+router.route('/stocklist/create').post(userController.createstocklistFn);
+//portfollio for user
+router.route('/portfollio/create').post(userController.createportfollioFn);
 
  router.route('/user/update/:id').patch(userController.updateUserController);
 

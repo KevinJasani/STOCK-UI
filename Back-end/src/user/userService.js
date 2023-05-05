@@ -1,5 +1,7 @@
 const signupModel = require('./signupModel');
 var userModel = require('./userModel');
+var listingModel = require('./listingModel.js');
+const portfollioModel = require('./portfollioModel');
 // try {
 module.exports.getDataFromDBService = () => {
  
@@ -28,7 +30,59 @@ module.exports.getlogindataDBService = () => {
         });
     });
 }
+// stock listing 
+module.exports.getstocklistDBService = () => {
+ 
+    return new Promise(function checkURL(resolve, reject) {
+        listingModel.find({}, function returnData(error, result) {
+            if (error) {
+                reject(false);
+            } else {
+        
+                resolve(result);
+            }
+        });
+    });
+}
+// create stock listing
 
+
+module.exports.createstockDBService = (userDetails) => {
+    return new Promise(function myFn(resolve, reject) {
+        var userModelData = new listingModel();
+        userModelData.stockName = userDetails.stockName;
+        userModelData.details = userDetails.details;
+        userModelData.value = userDetails.value;
+        userModelData.quantity = userDetails.quantity;
+        userModelData.total = userDetails.total;
+        userModelData.save(function resultHandle(error, result) {
+            if (error) {
+                reject(false);
+            } else {
+                resolve(true);
+            }
+        });
+    });
+}
+// create and add stock to portfollio
+
+module.exports.createstockportfollioDBService = (userDetails) => {
+    return new Promise(function myFn(resolve, reject) {
+        var userModelData = new portfollioModel();
+        userModelData.stockName = userDetails.stockName;
+        userModelData.details = userDetails.details;
+        userModelData.value = userDetails.value;
+        userModelData.quantity = userDetails.quantity;
+        userModelData.total = userDetails.total;
+        userModelData.save(function resultHandle(error, result) {
+            if (error) {
+                reject(false);
+            } else {
+                resolve(true);
+            }
+        });
+    });
+}
 
 module.exports.createUserDBService = (userDetails) => {
     return new Promise(function myFn(resolve, reject) {

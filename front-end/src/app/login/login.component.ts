@@ -14,7 +14,7 @@ export class LoginComponent {
   public user : User;
   email : String = ""
   password : String = ""
-
+  count  = 0;
   StudentArray : any[]= [];
   constructor(private http : HttpClient,private router: Router) {
       this.user = new User();
@@ -37,12 +37,20 @@ export class LoginComponent {
       
       if(this.email==this.StudentArray[i].email && this.password==this.StudentArray[i].password){
          console.log("founded ");
-         this.router.navigateByUrl('/')
+         this.router.navigateByUrl('/listing')
+         this.count=1;
          break;
       }else{
-        console.log("not founded !!!!");
+        this.count=0;
+        
+      
       }
       // You can perform any desired operation with each element of resultData
+  }
+  if(this.count==0)
+  {
+    console.log("not founded !!!!");
+    alert("invalid user and password")
   }
  
   }
