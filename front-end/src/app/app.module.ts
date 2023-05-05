@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import{HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { ListingComponent } from './listing/listing.component'
+import { ListingComponent } from './listing/listing.component';
+import { PortfollioComponent } from './portfollio/portfollio.component'
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ListingComponent } from './listing/listing.component'
     SampleComponent,
     LoginComponent,
     SignupComponent,
-    ListingComponent
+    ListingComponent,
+    PortfollioComponent
   ],
   imports: [
     BrowserModule,

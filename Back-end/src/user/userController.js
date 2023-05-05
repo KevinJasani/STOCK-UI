@@ -39,6 +39,20 @@ var stocklistdataFn = async (req, res) =>
     
    
 }
+// get portfollio list
+
+var getportfolliolistFn = async (req, res) =>
+{
+    try {
+        var empolyee = await userService.getportfolliolistDbService();
+        res.send({ "status": true, "data": empolyee });
+        // do something with the result
+      } catch (error) {
+        console.error(error);
+      }
+    
+   
+}
 // craete stock listing
 var createstocklistFn = async (req, res) => {
     try {
@@ -67,6 +81,17 @@ var createportfollioFn = async (req, res) => {
         console.error(error);
         res.send({ "status": false, "message": "123 Error creating user" });
     }
+}
+// delete stock from portfollio
+var deletestockportfollioFn = async (req, res) =>
+{
+     console.log(req.params.id);
+     var result = await userService.removestockDBService(req.params.id);
+     if (result) {
+        res.send({ "status": true, "message": "User Deleteddd"} );
+     } else {
+         res.send({ "status": false, "message": "User Deleteddd Faileddddddd" });
+     }
 }
 var createUserControllerFn = async (req, res) => {
     try {
@@ -119,6 +144,7 @@ var deleteUserController = async (req, res) =>
          res.send({ "status": false, "message": "User Deleteddd Faileddddddd" });
      }
 }
-module.exports = {createstocklistFn, getDataConntrollerfn, createUserControllerFn,updateUserController,deleteUserController, signupdataFn, getlogindataFn,stocklistdataFn,createportfollioFn };
+module.exports = {createstocklistFn, getDataConntrollerfn, createUserControllerFn,updateUserController,deleteUserController,
+     signupdataFn, getlogindataFn,stocklistdataFn,createportfollioFn, deletestockportfollioFn,getportfolliolistFn };
 
 

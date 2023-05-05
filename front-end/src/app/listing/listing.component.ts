@@ -29,11 +29,7 @@ export class ListingComponent {
   }
   open(data :any)
 {
-  
-  
-  
   this.modalService.open(data);
-  
 }
   getAllStudent() {
  
@@ -55,8 +51,14 @@ buystock(data:any)
   console.log(data);
   this.currentStudentID = data._id;
 }
-sellStock()
+sellStock(data : any)
 {
+  this.StockName = data.stockName;
+   this.details = data.details;
+   this.value = data.value;
+   //this.quantity=data.quantity;
+ 
+   this.currentStudentID = data._id;
   console.log("data getting");
 }
 Addtoportfollio ()
@@ -84,6 +86,25 @@ Addtoportfollio ()
       this.quantity="";
       
   });
-} 
+  
+}
+// remove stock from portfollio
+sellstockfromportfollo()
+{
+  let bodyData = {
+    "stockName" : this.StockName,
+    "details" : this.details,
+    "value" : this.value,
+    "quantity" : this.quantity,
+    "total" : Number(this.value)* Number(this.quantity)
+  };
+  this.http.delete("http://localhost:3000/portfollio/delete"+ "/"+ this.currentStudentID).subscribe((resultData: any)=>
+  {
+      console.log(resultData);
+      alert("Student Deletedddd")
+      this.getAllStudent();
+
+  });
+}
 }
 

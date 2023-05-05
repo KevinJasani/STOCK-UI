@@ -11,54 +11,22 @@
         </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let StockItem of listingArray">
-          <td  >{{StockItem.stockName  | uppercase}}</td>
+          <tr *ngFor="let StockItem of portfollioarr">
+          <td >{{StockItem.stockName  | uppercase}}</td>
           <td>{{StockItem.details }}</td>
           <td>{{StockItem.value }}</td>
-          <!--<td><input type="text" placeholder="Qty"  [(ngModel)]="qty" [ngModelOptions]="{standalone: true}"></td> -->
+          <!-- <td><input type="text" placeholder="Qty"  [(ngModel)]="qty" [ngModelOptions]="{standalone: true}"></td> -->
          
           <td>
-            <button class="btn  btn-success" (click)="buystock(StockItem)" (click)="open(content) " >Buy</button>
+            <!-- <button class="btn  btn-success" (click)="buystock(StockItem)" (click)="open(content) " >Buy</button> -->
             <button type="button" class="btn btn-danger" (click)="sellStock(StockItem) " (click)="open(sellcontent) ">Sell</button>            
           </td>
-        </tr>          
+        </tr>           
       </tbody>
 
     </table>
 </div>
-<!-- buy  stock-->
-<ng-template #content let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Add to Portfollio</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-	</div>
-	<form style="margin: 20px;">
-        <div class="form-group">
-          <label>Stock</label>
-          <input readonly type="text" [(ngModel)]="StockName" [ngModelOptions]="{standalone: true} "  class="form-control" id="name" placeholder=""> 
-        </div>
-        <div class="form-group">
-            <label>Market Sagment</label>
-            <input readonly type="text" [(ngModel)]="details" [ngModelOptions]="{standalone: true}"  class="form-control" id="name" placeholder="NSE"> 
-          </div>
-    
-        <div class="form-group">
-            <label>Value</label>
-            <input type="text" class="form-control"  [(ngModel)]="value" [ngModelOptions]="{standalone: true}" id="address" placeholder=""> 
-          </div>
-    
-          <div class="form-group">
-            <label>Quantity</label>
-            <input type="text" class="form-control " [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}" id="phone" placeholder="Quantity"> 
-          </div>
-         
-      
-      </form>
-	<div class="modal-footer">
-        <button type="submit" (click)="Addtoportfollio()" class="btn btn-success">Buy</button>
-	</div>
-</ng-template>
-<!-- Sell  stock-->
+
 <ng-template #sellcontent let-c="close" let-d="dismiss">
 	<div class="modal-header">
 		<h4 class="modal-title" id="modal-basic-title">Sell Stock</h4>
@@ -79,7 +47,8 @@
             <input type="text" class="form-control"  [(ngModel)]="value" [ngModelOptions]="{standalone: true}" id="address" placeholder=""> 
           </div>
     
-          <div class="form-group"> 
+          <div class="form-group">
+            <label>Quantity</label>
             <input type="text" class="form-control " [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}" id="phone" placeholder="Quantity"> 
           </div>
          

@@ -44,9 +44,22 @@ module.exports.getstocklistDBService = () => {
         });
     });
 }
+//get portfollio list data
+module.exports.getportfolliolistDbService = () => {
+ 
+    return new Promise(function checkURL(resolve, reject) {
+        portfollioModel.find({}, function returnData(error, result) {
+            if (error) {
+                reject(false);
+            } else {
+        
+                resolve(result);
+            }
+        });
+    });
+}
+
 // create stock listing
-
-
 module.exports.createstockDBService = (userDetails) => {
     return new Promise(function myFn(resolve, reject) {
         var userModelData = new listingModel();
@@ -145,6 +158,22 @@ module.exports.removeUserDBService = (id) => {
         });
     });
 }
+// delete stock portfollio
+module.exports.removestockDBService = (id) => {
+    return new Promise(function myFn(resolve, reject) {
+        portfollioModel.findByIdAndDelete(id, function returnData(error, result) {
+          if(error)
+          {
+                reject(false);
+          }
+          else
+          {
+             resolve(result);
+          }          
+        });
+    });
+}
+
 // }
 // catch(error) {
 //   console.log(error);

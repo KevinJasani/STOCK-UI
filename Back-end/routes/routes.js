@@ -16,7 +16,10 @@ router.route('/stocklist/getAll').get(userController.stocklistdataFn);
 router.route('/stocklist/create').post(userController.createstocklistFn);
 //portfollio for user
 router.route('/portfollio/create').post(userController.createportfollioFn);
+router.route('/portfollio/delete/:id').delete(userController.deletestockportfollioFn);
+router.route('/portfollio/getAll').get(userController.getportfolliolistFn);
 
+ 
  router.route('/user/update/:id').patch(userController.updateUserController);
 
  router.route('/user/delete/:id').delete(userController.deleteUserController);
